@@ -1,0 +1,24 @@
+$Module zstd 3 "Vinyl Fetch Processor for zstd de-/compression"
+
+$ABI vrt
+
+$Synopsis manual
+
+SYNOPSIS
+========
+
+::
+
+  import zstd;
+
+DESCRIPTION
+===========
+
+VFP zstd is a Vinyl Fetch Processor to support the zstd
+compression algorithm for responses fetched from backends. The VFP
+integrates Vinyl with the `zstd library`_.
+
+$Event event
+
+$Function STRING version()
+Returns the version of the underlying libzstd library.

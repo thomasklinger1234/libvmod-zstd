@@ -1,0 +1,20 @@
+varnishtest "zstd.version()"
+
+server s1 {
+	rxreq
+	txresp
+} -start
+
+varnish v1 -vcl+backend {
+	import zstd;
+
+    sub vcl_deliver {
+        set resp.http.zstd-version = zstd.version();
+    }
+} -start
+
+client c1 {
+	txreq -url "/"
+	rxresp
+	expect resp.http.zstd-version ~ \d+\.\d+\.\d+
+} -run
